@@ -24,7 +24,13 @@ echo "This may take a few minutes..."
 sudo apt update
 sudo apt install -y \
     python3-dev \
+    python3-setuptools \
     build-essential \
+    gcc \
+    g++ \
+    make \
+    libffi-dev \
+    libssl-dev \
     libgl1-mesa-dev \
     libgles2-mesa-dev \
     libxkbcommon-x11-0 \
@@ -44,7 +50,13 @@ sudo apt install -y \
     libqt6widgets6
 
 echo ""
-echo "Step 2: Installing PyQt6 via pip..."
+echo "Step 2: Installing cffi (required dependency)..."
+echo "Installing cffi first to avoid build issues..."
+pip install --upgrade pip setuptools wheel
+pip install cffi
+
+echo ""
+echo "Step 3: Installing PyQt6 via pip..."
 echo "This may take 10-20 minutes on Raspberry Pi (compiling from source)..."
 echo ""
 
