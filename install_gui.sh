@@ -50,34 +50,52 @@ sudo apt install -y \
     libqt6widgets6
 
 echo ""
-echo "Step 2: Installing cffi (required dependency)..."
-echo "Installing cffi first to avoid build issues..."
+echo "Step 2: Checking Python version..."
+python3 --version
+PYTHON_VERSION=$(python3 --version | cut -d' ' -f2 | cut -d'.' -f1,2)
+echo "Python version: $PYTHON_VERSION"
+if [ "$(echo "$PYTHON_VERSION < 3.8" | bc 2>/dev/null)" = "1" ] || [ -z "$PYTHON_VERSION" ]; then
+    echo "⚠ Warning: PyQt6 requires Python 3.8+"
+    echo "Your Python version may be too old"
+fi
+
+echo ""
+echo "Step 3: Upgrading pip and installing cffi..."
 pip install --upgrade pip setuptools wheel
 pip install cffi
 
 echo ""
-echo "Step 3: Installing PyQt6 via pip..."
-echo "This may take 10-20 minutes on Raspberry Pi (compiling from source)..."
+echo "Step 4: Installing PyQt6..."
+echo "Attempting to install PyQt6 (this may take 10-20 minutes on Pi)..."
 echo ""
 
-# Try installing PyQt6
-if pip install PyQt6; then
+# Try installing PyQt6 - first try with wheels, then force build from source
+echo "Attempting installation methods..."
+if pip install PyQt6 2>&1 | tee /tmp/pyqt6_install.log; then
     echo ""
     echo "✓ PyQt6 installed successfully!"
+elif pip install --no-binary :all: PyQt6 2>&1 | tee -a /tmp/pyqt6_install.log; then
     echo ""
-    echo "You can now run the GUI:"
-    echo "  ./flashd.py gui"
+    echo "✓ PyQt6 installed successfully (built from source)!"
 else
     echo ""
     echo "⚠ PyQt6 installation failed"
     echo ""
-    echo "Troubleshooting options:"
-    echo "1. Check if you have enough disk space: df -h"
-    echo "2. Increase swap space if Pi runs out of memory"
-    echo "3. Try installing with verbose output: pip install --verbose PyQt6"
-    echo "4. Check INSTALL_PYQT6.md for more troubleshooting tips"
+    echo "PyQt6 may not be compatible with your Python version or architecture"
+    echo ""
+    echo "Alternative solution: Use PyQt5 instead (much easier on Raspberry Pi)"
+    echo "  Run: ./install_pyqt5.sh"
+    echo "  Then we'll need to modify the GUI code to use PyQt5"
+    echo ""
+    echo "Or check your Python version:"
+    echo "  python3 --version  # PyQt6 requires Python 3.8+"
+    echo "  ./check_python.sh  # Detailed environment check"
     exit 1
 fi
+
+echo ""
+echo "You can now run the GUI:"
+echo "  ./flashd.py gui"
 
 echo ""
 echo "=== GUI Installation Complete ==="
