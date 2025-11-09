@@ -83,7 +83,8 @@ cd ~/parallel_flash_esp32
 # Install system dependencies
 echo "Installing system packages..."
 sudo apt update
-sudo apt install -y python3-pip python3-venv python3-pyqt6 || true
+sudo apt install -y python3-pip python3-venv
+# Note: PyQt6 is installed via pip, not apt (not available in Pi repos)
 
 # Create venv if it doesn't exist
 if [ ! -d "venv" ]; then

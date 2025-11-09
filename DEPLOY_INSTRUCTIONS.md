@@ -42,7 +42,8 @@ This will:
 sudo apt update
 
 # Install required system packages
-sudo apt install -y python3-pip python3-venv python3-pyqt6
+sudo apt install -y python3-pip python3-venv
+# Note: PyQt6 will be installed via pip (not available in apt repos)
 
 # Create virtual environment
 python3 -m venv venv
@@ -76,7 +77,8 @@ ssh pi@192.168.54.181
 ```bash
 cd ~/parallel_flash_esp32
 sudo apt update
-sudo apt install -y python3-pip python3-venv python3-pyqt6
+sudo apt install -y python3-pip python3-venv
+# Note: PyQt6 will be installed via pip (not available in apt repos)
 python3 -m venv venv
 source venv/bin/activate
 pip install --upgrade pip

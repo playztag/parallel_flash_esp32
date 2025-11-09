@@ -15,7 +15,8 @@ fi
 # Install system dependencies
 echo "Installing system packages..."
 sudo apt update
-sudo apt install -y python3-pip python3-venv python3-pyqt6
+sudo apt install -y python3-pip python3-venv
+# Note: PyQt6 is installed via pip, not apt (not available in Pi repos)
 
 # Create virtual environment
 if [ ! -d "venv" ]; then

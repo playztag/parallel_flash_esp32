@@ -48,7 +48,8 @@ cd parallel_flash_esp32
 
 # Install dependencies
 sudo apt update
-sudo apt install -y python3-pip python3-venv python3-pyqt6
+sudo apt install -y python3-pip python3-venv
+# Note: PyQt6 will be installed via pip (not available in apt repos)
 
 # Create venv and install packages
 python3 -m venv venv
