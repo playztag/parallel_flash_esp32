@@ -5,9 +5,9 @@
 SSH into your Pi or open terminal via VNC:
 
 ```bash
-# Clone the repository
+# Clone the repository (using HTTPS - no SSH key needed)
 cd ~
-git clone git@github.com:playztag/parallel_flash_esp32.git
+git clone https://github.com/playztag/parallel_flash_esp32.git
 cd parallel_flash_esp32
 
 # Run automated setup

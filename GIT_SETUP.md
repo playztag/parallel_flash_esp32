@@ -13,7 +13,7 @@ cd /Users/quangan/Documents/Sandbox/parallel_flash_esp32
 
 # Add your remote (replace with your actual repo URL)
 git remote add origin https://github.com/YOUR_USERNAME/parallel_flash_esp32.git
-# OR if using SSH:
+# OR if using SSH (requires SSH key setup):
 # git remote add origin git@github.com:YOUR_USERNAME/parallel_flash_esp32.git
 
 # Commit all files
