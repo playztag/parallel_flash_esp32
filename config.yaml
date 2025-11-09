@@ -1,0 +1,10 @@
+baud_rate: 921600
+chip: esp32
+flash_offset: 0x1000
+firmware_path: static/firmware/firmware.bin
+verify: true
+max_workers: 10
+mqtt:
+  enabled: false
+  broker: localhost
+  topic: zflash/results

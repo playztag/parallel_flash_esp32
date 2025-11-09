@@ -1,0 +1,40 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+venv/
+env/
+ENV/
+.venv
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Project specific
+static/logs/*.log
+static/flash_history.db
+*.db
+*.log
+
+# Firmware binaries (optional - uncomment if you don't want to track firmware)
+# static/firmware/*.bin
+# *.bin
+
+# Build artifacts
+build/
+dist/
+*.egg-info/
+
+# Config overrides (if any)
+config.local.yaml
+
