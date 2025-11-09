@@ -32,6 +32,20 @@ source venv/bin/activate
 pip install --upgrade pip
 pip install -r requirements.txt
 
+# Try to install GUI dependencies (optional - can skip if it fails)
+echo ""
+echo "Attempting to install GUI dependencies (PyQt6)..."
+echo "Note: This may take a while on Raspberry Pi and can be skipped if you only need CLI mode"
+if pip install PyQt6 2>&1 | tee /tmp/pyqt6_install.log; then
+    echo "✓ PyQt6 installed successfully - GUI mode available"
+else
+    echo "⚠ PyQt6 installation failed - GUI mode will not be available"
+    echo "  CLI mode will still work fine"
+    echo "  To retry later, install system dependencies first:"
+    echo "    sudo apt install -y python3-dev build-essential libgl1-mesa-dev libgles2-mesa-dev libxkbcommon-x11-0"
+    echo "    Then: pip install PyQt6"
+fi
+
 # Make flashd.py executable
 chmod +x flashd.py
 

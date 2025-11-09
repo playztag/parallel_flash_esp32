@@ -1,0 +1,6 @@
+# GUI dependencies (optional)
+# Install system dependencies first on Raspberry Pi:
+# sudo apt install -y python3-dev python3-pip build-essential libgl1-mesa-dev libgles2-mesa-dev libxkbcommon-x11-0 libxcb-xinerama0 libxcb-cursor0 libxcb-icccm4 libxcb-image0 libxcb-keysyms1 libxcb-randr0 libxcb-render-util0 libxcb-xinerama0 libxcb-xfixes0 libxcb-xkb1 libxkbcommon-x11-0 libxkbcommon0
+
+PyQt6>=6.5
+
